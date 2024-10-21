@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- CARD PARA LA BIENVENIDA -->
+  
   <ion-card>
     <ion-card-header>
       <ion-card-title>Hola, {{ usuarioLogin }}</ion-card-title>
@@ -18,7 +18,7 @@
       Bienvenido, te invitamos a elegir como vas a actuar hoy :)
     </ion-card-content>
   </ion-card>
-  <!-- conductor -->
+  
   <div style="display: flex; justify-content: space-around;">
     <ion-card style="width: 45%; margin-top: 35px;">
       <img class="gif-coche" alt="" src="assets/icon/coche.gif" />
@@ -28,7 +28,7 @@
 
       <ion-card-content>
        <p>Fija tu ruta y detalla el viaje.</p>
-        <ion-button color="success" routerLink="/conductor" expand="full">
+        <ion-button (click)="changeUserType('conductor')" color="success" routerLink="/conductor" expand="full">
           <ion-icon  slot="start" name="car-outline"></ion-icon>
           Llevar
           </ion-button>
@@ -43,7 +43,7 @@
 
       <ion-card-content>
         <p>Selecciona un viaje y comienza.</p>
-        <ion-button color="success" routerLink="/pasajero" expand="full">
+        <ion-button (click)="changeUserType('pasajero')" color="success" routerLink="/pasajero" expand="full">
           <ion-icon slot="start" name="star"></ion-icon>
           Choferes
         </ion-button>

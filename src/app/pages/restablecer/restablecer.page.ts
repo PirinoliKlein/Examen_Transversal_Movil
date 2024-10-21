@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Usuario } from 'src/app/folder/interfaces/usuario';
 import { AuthService } from 'src/app/services/firebas/usuarios.service.spec';
 import Swal from 'sweetalert2';
 import { IonicModule } from '@ionic/angular';
+import { Usuario } from 'src/app/folder/interfaces/usuario';
 
 @Component({
   selector: 'app-restablecer',
@@ -20,7 +19,7 @@ export class RestablecerPage implements OnInit {
   resetPasswordForm: FormGroup;
   emailValue: string = '';
   passValue: string = '';
-
+  
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -40,30 +39,48 @@ export class RestablecerPage implements OnInit {
 
   ngOnInit() {}
 
-  async resetPassword() {
-    if (this.resetPasswordForm.valid) {
-      }
-    try { 
-      const usuarioFirebase = await this.authService.recoveryPassword(this.emailValue);
-      const usuario = usuarioFirebase.usuario;
+  async recoveryPassword() {
+    try {
+      let timerInterval: any;
+     await this.authService.recoveryPassword(this.emailValue);
 
-      if(usuario) {
-        await this.firestore.collection('usuarios').doc(usuario.email).update({
-          pass : this.passValue
+      Swal.fire({
+        title: "Procesando!",
+        html: "Enviando correo...",
+        timer: 2000,
+        timerProgressBar: true,
+        heightAuto:false,
+        didOpen: () => {
+          Swal.showLoading();
+          const timer = Swal.getPopup()!.querySelector("b");
+          timerInterval = setInterval(() => {
+            timer!.textContent = `${Swal.getTimerLeft()}`;
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        }
+      }).then((result) => {
+        
+        if (result.dismiss === Swal.DismissReason.timer) {
           
-        })
-      }
 
-    }  catch(error){
-
+          Swal.fire({
+            title: 'Éxito!',
+            text: 'Correo enviado correctamente!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            heightAuto: false
+          });
+        }
+      });
+    } catch (error) {
+      
     }
+  }
     
   
 }
-
-
-
-
 
 
 

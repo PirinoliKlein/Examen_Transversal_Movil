@@ -1,32 +1,20 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Restablecer Contraseña</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button text="Volver Atrás"></ion-back-button>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-title>Recuperar contreña</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword()">
-    <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-note *ngIf="emailInvalid" color="danger">Correo electrónico inválido</ion-note>
+<ion-content >
+  <ion-card>
+    <ion-card-content>
+      <form (submit)="recoveryPassword()">
+        <ion-input type="email" placeholder="example@duocuc.cl" name="email" [(ngModel)]="emailValue"></ion-input>
+        <ion-button type="submit">Recuperar contraseña</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 
-    <ion-item>
-      <ion-label position="floating">Nueva Contraseña</ion-label>
-      <ion-input type="password" formControlName="newPassword"></ion-input>
-    </ion-item>
-    <ion-note *ngIf="newPasswordInvalid" color="danger">La contraseña debe tener al menos 6 caracteres</ion-note>
-
-    <ion-item>
-      <ion-label position="floating">Confirmar Contraseña</ion-label>
-      <ion-input type="password" formControlName="confirmPassword"></ion-input>
-    </ion-item>
-    <ion-note *ngIf="passwordsDoNotMatch" color="danger">Las contraseñas no coinciden</ion-note>
-
-    <ion-button expand="full" type="submit">Restablecer Contraseña</ion-button>
-  </form>
 </ion-content>

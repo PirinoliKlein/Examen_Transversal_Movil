@@ -7,6 +7,7 @@ import { Usuario } from 'src/app/folder/interfaces/usuario';
 import { AuthService } from 'src/app/services/firebas/usuarios.service.spec';
 import Swal from 'sweetalert2';
 import { IonicModule } from '@ionic/angular';
+import { MensajesService } from 'src/app/services/mensajes.service';
 @Component({
   selector: 'app-register',
   templateUrl: './registro.page.html',
@@ -23,7 +24,8 @@ export class RegisterPage implements OnInit {
     private formBuilder:FormBuilder,
     private loadingController: LoadingController,
     private authService: AuthService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private mensajes: MensajesService
   ) {
     this.loginForm = this.formBuilder.group({
       email : ['', [Validators.required, Validators.email]],
@@ -72,12 +74,8 @@ export class RegisterPage implements OnInit {
       
     
     } catch (error) {
+      this.mensajes.mensaje('Error crear la cuentade usuario, intentelo nuevamente!','error','Error!')
       Swal.fire({
-        title: 'Error!',
-        text: 'Error crear la cuentade usuario, intentelo nuevamente!',
-        icon: 'error',
-        confirmButtonText: 'OK',
-        heightAuto: false
       });
     }}
 }
