@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-      <ion-button (click)="logout()"><ion-icon name="log-out"></ion-icon></ion-button>
+      <ion-menu-button color="success"></ion-menu-button>
+      <ion-button routerLink="/home-admin" color="success"><ion-icon name="log-out"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title></ion-title>
   </ion-toolbar>
@@ -15,7 +15,7 @@
         <p>Tipo usuario: {{ aux.tipo }}</p>
         <h2>{{ aux.email }}</h2>
       </ion-label>
-      <ion-button fill="outline" color="secondary" (click)="editarUser(aux.uid)">
+      <ion-button color="success" fill="outline" color="success" (click)="editarUser(aux.uid)">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
       </ion-button>
     </ion-item>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="viajeData">
+    <h2>Información del Viaje</h2>
+    <p><strong>Precio:</strong> ${{ viajeData.precio }}</p>
+    <p><strong>Capacidad:</strong> {{ viajeData.pasajeros }} personas</p>
+    <p><strong>Dirección:</strong> {{ viajeData.direccion }}</p>
+
+    <ion-button expand="full" >Unirse al Viaje</ion-button>
+  </div>
+
+  <div *ngIf="!viajeData">
+    <p>Cargando datos del viaje...</p>
+  </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="viaje">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información del Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Dirección:</strong> {{ viaje.direccion }}</p>
+      <p><strong>Precio:</strong> {{ viaje.precio }}</p>
+      <p><strong>Capacidad:</strong> {{ viaje.pasajeros }}</p>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-button color="success" routerLink="/codigoqr" style="margin-left: 110px; margin-bottom: 70px;">QR
+    <ion-icon slot="start" name="qr-code"></ion-icon>
+  </ion-button>
+</ion-content>
+
+<ion-content *ngIf="!viaje">
+  <p>No se encontraron detalles del viaje.</p>
+</ion-content>

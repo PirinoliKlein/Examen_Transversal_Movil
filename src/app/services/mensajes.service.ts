@@ -8,39 +8,23 @@ export class MensajesService {
 
   constructor() { }
 
-  mensaje(msj: any, icon: any, title: any){
-    Swal.fire({
+  mensaje(msj:any, icon:any, title:any) {
+    return Swal.fire({
       icon: icon,
       title: title,
       text: msj,
       heightAuto: false
-    })
-
+    });
   }
 
-  succes() {
-    
-  }
-
-  error(){
-
-  }
-
-  info(){
-
-  }
-
-  warning(){
-
-  }
-
-  mixin(timer: any, msj: any, icon: any){
+  mixin(timer:any, msj:any, icon:any) {
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
       showConfirmButton: false,
-      timer: 3000,
+      timer: timer,
       timerProgressBar: true,
+      heightAuto: false,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;

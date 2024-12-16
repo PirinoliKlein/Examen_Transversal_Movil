@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button color="success"></ion-back-button>
     </ion-buttons>
-    <ion-title>edit-user</ion-title>
+    <ion-title>Editar Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,16 +26,17 @@
 
     <ion-item>
       <ion-label position="stacked">Tipo:</ion-label>
-      <ion-select formControlName="tipo" placeholder="Selecconar">
+      <ion-select formControlName="tipo" placeholder="Seleccionar">
         <ion-select-option value="admin" >Administrador</ion-select-option>
         <ion-select-option value="usuario">Usuario</ion-select-option>
         <ion-select-option value="conductor">conductor</ion-select-option>
         <ion-select-option value="pasajero">pasajero</ion-select-option>
+
       </ion-select>
     </ion-item>
 
     <ion-footer>
-      <ion-button type="submit">Modificar</ion-button>
+      <ion-button color="success" type="submit">Modificar</ion-button>
     </ion-footer>
   </form>
 </ion-content>

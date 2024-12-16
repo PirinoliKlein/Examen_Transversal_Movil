@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class PasajerosService {
 
   constructor(private angularFireAuth: AngularFireAuth) { }
+  
 
   login(email: string, pass: string){
     return this.angularFireAuth.signInWithEmailAndPassword(email, pass);

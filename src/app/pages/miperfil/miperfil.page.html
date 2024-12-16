@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información de Perfil</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
+        <div class="perfil-info">
+          <p>
+            <strong>Nombre:</strong>
+            <ion-input formControlName="nombre" placeholder="Ingresa tu nombre"></ion-input>
+            <ion-text color="danger" *ngIf="perfilForm.get('nombre')?.errors?.['required'] && (perfilForm.get('nombre')?.touched)">
+              El nombre es requerido.
+            </ion-text>
+            <ion-text color="danger" *ngIf="perfilForm.get('nombre')?.errors?.['noNumeros'] && (perfilForm.get('nombre')?.touched)">
+              El nombre no puede contener números.
+            </ion-text>
+          </p>
+
+          <p>
+            <strong>Email:</strong> {{ usuario.email }}
+          </p>
+
+          <p>
+            <strong>Teléfono:</strong>
+            <ion-input formControlName="telefono" type="tel" placeholder="Ingresa tu teléfono"></ion-input>
+            <ion-text color="danger" *ngIf="perfilForm.get('telefono')?.errors?.['required'] && (perfilForm.get('telefono')?.touched)">
+              El teléfono es requerido.
+            </ion-text>
+            <ion-text color="danger" *ngIf="perfilForm.get('telefono')?.errors?.['pattern'] && (perfilForm.get('telefono')?.touched)">
+              El teléfono debe contener solo números.
+            </ion-text>
+          </p>
+
+          <p>
+            <strong>Dirección:</strong>
+            <ion-input formControlName="direccion" placeholder="Ingresa tu dirección"></ion-input>
+            <ion-text color="danger" *ngIf="perfilForm.get('direccion')?.errors?.['required'] && (perfilForm.get('direccion')?.touched)">
+              La dirección es requerida.
+            </ion-text>
+          </p>
+        </div>
+
+        <ion-button expand="full" color="success" type="submit" style="margin-top: 20px;">
+          Guardar Cambios
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" color="dark" routerLink="/home" style="margin-top: 10px;">
+    Volver al Inicio
+  </ion-button>
+</ion-content>

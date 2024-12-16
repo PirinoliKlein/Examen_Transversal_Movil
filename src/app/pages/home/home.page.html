@@ -1,21 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
+      <ion-button routerLink="/miperfil">
+        <ion-icon name="person-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-menu-button color="success"></ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
   <ion-card>
     <ion-card-header>
       <ion-card-title>Hola, {{ usuarioLogin }}</ion-card-title>
     </ion-card-header>
-  
     <ion-card-content>
-      Bienvenido, te invitamos a elegir como vas a actuar hoy :)
+      Bienvenido, te invitamos a elegir cómo vas a actuar hoy :)
     </ion-card-content>
   </ion-card>
   
@@ -25,13 +26,12 @@
       <ion-card-header>
         <ion-card-title>Chofer</ion-card-title>
       </ion-card-header>
-
       <ion-card-content>
-       <p>Fija tu ruta y detalla el viaje.</p>
-        <ion-button (click)="changeUserType('conductor')" color="success" routerLink="/conductor" expand="full">
-          <ion-icon  slot="start" name="car-outline"></ion-icon>
-          Llevar
-          </ion-button>
+        <p>Fija tu ruta y detalla el viaje.</p>
+        <ion-button (click)="changeUserType('conductor')" color="success" routerLink="/mapa" expand="full">
+          <ion-icon slot="start" name="car-outline"></ion-icon>
+          Crear Viaje
+        </ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -40,12 +40,22 @@
       <ion-card-header>
         <ion-card-title>Pasajero</ion-card-title>
       </ion-card-header>
-
       <ion-card-content>
-        <p>Selecciona un viaje y comienza.</p>
+        <p>Selecciona un viaje</p>
         <ion-button (click)="changeUserType('pasajero')" color="success" routerLink="/pasajero" expand="full">
-          <ion-icon slot="start" name="star"></ion-icon>
-          Choferes
+          <ion-icon slot="start" name="car-outline"></ion-icon>
+          Ver Viajes
         </ion-button>
       </ion-card-content>
     </ion-card>
+  </div>
+
+  <ion-button expand="full" color="primary" (click)="downloadAPK()" style="margin-top: 20px;">
+    <ion-icon slot="start" name="download-outline"></ion-icon>
+    Descargar APK
+  </ion-button>
+  <ion-button expand="full" color="danger" (click)="logout()" style="margin-top: 20px;">
+    <ion-icon slot="start" name="log-out"></ion-icon>
+    Cerrar Sesión
+  </ion-button>
+</ion-content>

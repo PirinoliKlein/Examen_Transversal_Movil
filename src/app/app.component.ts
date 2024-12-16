@@ -50,7 +50,7 @@ export class AppComponent {
       ];
     } else if (this.tipoUsuario === 'conductor'){
       this.appPages = [
-        { title: 'Dashboard', url: '/home', icon: 'home' },
+        { title: 'Dashboard', url: '/home-chofer', icon: 'home' },
         { title: 'Cerrar sesión', url: '/login', icon: 'log-out' }
       ];
       

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Escáner QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="startScan()">Iniciar escaneo</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let barcode of barcodes">
+      {{ barcode }}
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<footer>
+  <ion-button (click)="stopScan()">Terminar</ion-button>
+</footer>

@@ -1,29 +1,32 @@
+import { Component, OnInit,  } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/folder/interfaces/usuario';
 import { AuthService } from 'src/app/services/firebas/usuarios.service.spec';
 import { NativeBiometric } from 'capacitor-native-biometric';
-import { Route, Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-splashscreen',
   templateUrl: './splashscreen.page.html',
   styleUrls: ['./splashscreen.page.scss'],
 })
-export class SplashscreenPage implements OnInit {
+export class SplashscreenPage implements OnInit{
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+
   ) { }
 
+
   ngOnInit() {
-    // DEJAMOS UN TIMER QUE REDIRECCIONA
+    
     setTimeout(() => {
       this.checkLogin();
     }, 2000);
+
   }
 
   async checkLogin() {
@@ -42,8 +45,6 @@ export class SplashscreenPage implements OnInit {
               this.router.navigate(['/admin-dashboard']);
             } else if ( userData.tipo === 'usuario') {
               this.router.navigate(['/usuario-dashboard']);
-            } else {
-              this.router.navigate(['/invitado-dashboard']);
             }
           }
         } catch (error) {
@@ -64,7 +65,8 @@ export class SplashscreenPage implements OnInit {
         description: 'Coloca tu huella en el sensor para ingresar.'
       });
     } catch (error) {
-      throw error; 
+      throw error; // Forzamos el error para capturarlo
     }
   }
+
 }

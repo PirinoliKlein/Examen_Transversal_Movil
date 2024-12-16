@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Editar Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="editViajeForm" (ngSubmit)="actualizarViaje()">
+    <ion-item>
+      <ion-label position="stacked">Dirección:</ion-label>
+      <ion-input formControlName="direccion" type="text" placeholder="Ingrese la dirección"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Cantidad de Pasajeros:</ion-label>
+      <ion-input formControlName="pasajeros" type="number" placeholder="Ingrese la cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Precio:</ion-label>
+      <ion-input formControlName="precio" type="number" placeholder="Ingrese el precio"></ion-input>
+    </ion-item>
+
+    <ion-footer>
+      <ion-button color="success" type="submit" expand="full">Modificar</ion-button>
+      <ion-button color="medium" expand="full" [routerLink]="['/ver-viajes']">Volver a Ver Viajes</ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

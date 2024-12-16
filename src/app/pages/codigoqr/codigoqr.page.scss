@@ -1,0 +1,10 @@
+.qr-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100%; /* Asegúrate de que ocupe toda la altura */
+  }
+  
+  .qr-code-wrapper {
+    text-align: center; /* Centra el contenido dentro del wrapper */
+  }

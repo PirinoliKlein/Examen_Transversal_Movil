@@ -1,0 +1,25 @@
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; // Espacio entre los elementos
+  
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+  
+      strong {
+        color: #33ff00; // Color para el texto fuerte
+      }
+    }
+  
+    ion-input {
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Sombra suave para los inputs
+    }
+  }
+  
+  ion-card {
+    margin: 20px; // Espacio alrededor de la tarjeta
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra en la tarjeta
+  }
+  

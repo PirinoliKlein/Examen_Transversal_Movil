@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Código QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>UID del Viaje: {{ uidViaje }}</h2>
+  <img *ngIf="qrCodeDataUrl" [src]="qrCodeDataUrl" alt="Código QR" />
+  <p *ngIf="!qrCodeDataUrl">Generando código QR...</p>
+
+  <ion-button expand="full" (click)="changeUserType('usuario')" routerLink="/home" color="success" style="margin-top: 20px;">
+    Volver al Inicio
+  </ion-button>
+</ion-content>

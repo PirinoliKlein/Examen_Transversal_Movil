@@ -32,13 +32,13 @@ export class DashboardPage implements OnInit {
     });
   }
 
-  // FUNCION PARA NAVEGARA OTRA PAGINA ENVIANDO EL UID DEL USER
+  
   editarUser(uid:string) {
     this.router.navigate(['/editar-user',uid]);
   }
 
   logout() {
-    // TODO: ALERTA FUNCIONANDO
+    
     this.authServices.logout();
     this.router.navigate(['/login']);
   }

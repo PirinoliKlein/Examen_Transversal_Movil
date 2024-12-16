@@ -14,7 +14,8 @@ export const environment = {
     storageBucket: "tellevoapp-3ecca.appspot.com",
     messagingSenderId: "950393465507",
     appId: "1:950393465507:web:cb4310fd4ea97937a1ed16",
-    measurementId: "G-PTXCX8T100"
+    measurementId: "G-PTXCX8T100",
+    MAPBOX_ACCESS_TOKEN:'pk.eyJ1IjoibWF0bWFuY2lsbGEiLCJhIjoiY20yaTdpb3ZtMGNwbjJrb29pNnVxd3pvMSJ9.GGysqruIqGKKuJTvG9OJ6A',
   }
 };
 

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Bienvenido Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="admin-home" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+  <div class="welcome-message" style="text-align: center; margin-top: 150px;">
+    <h2>Bienvenido, Admin</h2>
+  </div>
+
+  <div class="button-container" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+    <ion-button expand="full" color="success" routerLink="/admin-dashboard">
+      <ion-icon slot="start" name="people-outline"></ion-icon>
+      Ver Usuarios
+    </ion-button>
+
+    <ion-button expand="" color="success" routerLink="/ver-viajes">
+      <ion-icon slot="start" name="car-outline"></ion-icon>
+      Ver Viajes
+    </ion-button>
+  </div>
+
+</ion-content>
+
+<footer>
+  <ion-button expand="full" color="danger"(click)="logout()" style="margin-bottom: 80px;">
+    <ion-icon slot="start" name="log-out-outline"></ion-icon>
+    Cerrar Sesión
+  </ion-button>
+</footer>

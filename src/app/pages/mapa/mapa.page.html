@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tellevo APP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Datos del viaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div style="padding: 20px; background-color:gray; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <ion-item>
+      <ion-input 
+        [(ngModel)]="direccion" 
+        placeholder="Ingrese dirección"
+        clearInput>
+      </ion-input>
+      <ion-button (click)="buscar()" color="success" slot="end">Buscar</ion-button>
+      <ion-button (click)="borrar()" color="danger" slot="end">Borrar</ion-button>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-select 
+          (ionChange)="direccion_seleccionada($event)" 
+          placeholder="Seleccione Dirección">
+          <ion-select-option [value]="dire" *ngFor="let dire of mis_direcciones">
+            {{ dire.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div id="mapa-box" style="width: 100%; height: 250px; border-radius: 8px; margin: 20px 0;"></div>
+
+  <form [formGroup]="conductorForm" (ngSubmit)="onSubmit()" style="padding: 20px;">
+    <ion-item>
+      <ion-label position="floating">Ingrese tarifa</ion-label>
+      <ion-input 
+        formControlName="precio" 
+        type="number" 
+        min="1000" >
+      </ion-input>
+    </ion-item>
+    <ion-note *ngIf="conductorForm.get('precio')?.invalid && (conductorForm.get('precio')?.dirty || conductorForm.get('precio')?.touched)" color="danger">
+      {{ precioInvalid ? precioErrorMessage : 'La tarifa es requerida.' }}
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Ingrese capacidad</ion-label>
+      <ion-input 
+        formControlName="capacidad" 
+        type="number" 
+        min="1">
+      </ion-input>
+    </ion-item>
+    <ion-note *ngIf="conductorForm.get('capacidad')?.invalid && (conductorForm.get('capacidad')?.dirty || conductorForm.get('capacidad')?.touched)" color="danger">
+      {{ capacidadInvalid ? capacidadErrorMessage : 'La capacidad es requerida.' }}
+    </ion-note>
+
+    <ion-button expand="full" color="success" type="submit" [disabled]="conductorForm.invalid" style="margin-top: 20px;">Crear Viaje</ion-button>
+  </form>
+
+
+  <ion-button expand="full" routerLink="/home" color="success"(click)="changeUserType('usuario')" style="margin-top: 20px;">Ir a Inicio</ion-button>
+</ion-content>
